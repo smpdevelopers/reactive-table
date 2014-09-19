@@ -18,7 +18,7 @@
         </div>
       </div>
     {{/if}}
-    <table class="table table-striped table-hover reactive-table" reactive-table-group="{{group}}">
+    <table class="table table-bordered reactive-table" reactive-table-group="{{group}}">
       <thead>
         <tr>
           {{#each fields}}
@@ -51,11 +51,15 @@
       </thead>
       <tbody>
         {{#each sortedRows}}
-          <tr class="{{../rowClass this}}">
-            {{#each ../fields}}
-              <td class="{{key}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
-            {{/each}}
-          </tr>
+          {{#unless prompt}}
+            <tr class="{{../rowClass this}}">
+              {{#each ../fields}}
+                <td class="{{key}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
+              {{/each}}
+            </tr>
+          {{else}}
+            <tr><td>Bingo</td></tr>
+          {{/unless}}
         {{/each}}
       </tbody>
     </table>
@@ -76,4 +80,12 @@
       </div>
     {{/if}}
   {{/with}}
+</template>
+
+<template name="reactiveTableCheckbox">
+  <input type="checkbox" />
+</template>
+
+<template name="reactiveTableRowPrompt">
+  {{message}}
 </template>

@@ -1,0 +1,41 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    margin: 50px 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+#table {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
+    width: 700px;
+    margin: 0 auto;
+}
+
+#table td {
+    position: relative;
+}
+
+.hover-view {
+    display: none;
+    padding: 8px;
+}
+
+#table td:hover .hover-view {
+    display: table-cell;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(238, 238, 238, 0.9);
+}

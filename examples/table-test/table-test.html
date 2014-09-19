@@ -1,0 +1,22 @@
+<head>
+	<title>table-test</title>
+</head>
+
+<body>
+	{{> table_test}}
+</body>
+
+<template name="table_test">
+	<div id="table">
+		{{> reactiveTable collection=players settings=tableSettings}}
+	</div>
+</template>
+
+<template name="table_test_name">
+	<div class="default-view">
+		{{this.name}}
+	</div>
+	<div class="hover-view">
+		Alternative View
+	</div>
+</template>
