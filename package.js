@@ -15,4 +15,6 @@ Package.on_use(function (api) {
     api.add_files('lib/reactive_table_i18n.js', 'client');
     api.add_files('lib/reactive_table.js', 'client');
     api.add_files('lib/reactive_table.css', 'client');
+
+    api.export && api.export(['ReactiveTable'], 'client');
 });

@@ -35,3 +35,8 @@
 	position: relative;
 	top: 2px;
 }
+
+.yes_btn, .no_btn {
+    float: right;
+    margin-right: 10px;
+}

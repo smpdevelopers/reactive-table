@@ -51,15 +51,15 @@
       </thead>
       <tbody>
         {{#each sortedRows}}
-          {{#unless prompt}}
-            <tr class="{{../rowClass this}}">
+          <tr class="{{../rowClass this}}" data-id={{_id}}> 
+            {{#unless promptRow ../group}}
               {{#each ../fields}}
                 <td class="{{key}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
               {{/each}}
-            </tr>
-          {{else}}
-            <tr><td>Bingo</td></tr>
-          {{/unless}}
+            {{else}}
+              <td colspan={{length ../fields}}>{{> reactiveTableRowPrompt promptObj }}</td>
+            {{/unless}}
+          </tr>
         {{/each}}
       </tbody>
     </table>
@@ -88,4 +88,6 @@
 
 <template name="reactiveTableRowPrompt">
   {{message}}
+  <button class="no_btn">No</button>
+  <button class="yes_btn">Yes</button>
 </template>

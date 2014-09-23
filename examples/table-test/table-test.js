@@ -17,6 +17,13 @@ if (Meteor.isClient) {
             //useFontAwesome: true
         };
     };
+
+    Template.table_test.events({
+        'click tr': function(e) {
+            var id = $(e.currentTarget).attr('data-id');
+            ReactiveTable.showRowPrompt('', id, 'Hey dude!');
+        }
+    });
 }
 
 if (Meteor.isServer) {
