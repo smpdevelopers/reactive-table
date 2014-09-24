@@ -20,22 +20,3 @@ body {
     width: 700px;
     margin: 0 auto;
 }
-
-#table td {
-    position: relative;
-}
-
-.hover-view {
-    display: none;
-    padding: 8px;
-}
-
-#table td:hover .hover-view {
-    display: table-cell;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(238, 238, 238, 0.9);
-}

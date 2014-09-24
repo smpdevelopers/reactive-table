@@ -11,9 +11,10 @@ if (Meteor.isClient) {
                 { tmpl: Template.reactiveTableCheckbox, label: '', sortable: false },
                 { key: 'name', tmpl: Template.table_test_name, label: 'Full Name' },
                 { key: 'name', label: 'First Name', fn: function (name) { return name.split(' ')[0]; } },
-                { key: 'score', label: 'Score', sortable: false }
+                { key: 'score', label: 'Score', sortable: false, isNumber: true, filterable: true }
             ],
-            showFilter: false
+            showFilter: false,
+            showNavigation: 'never'
             //useFontAwesome: true
         };
     };
@@ -21,7 +22,10 @@ if (Meteor.isClient) {
     Template.table_test.events({
         'click tr': function(e) {
             var id = $(e.currentTarget).attr('data-id');
-            ReactiveTable.showRowPrompt('', id, 'Hey dude!');
+            ReactiveTable.showRowPrompt('', id, 'Hey dude!', function() {
+                console.log('1')
+                alert(1);
+            });
         }
     });
 }

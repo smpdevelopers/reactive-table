@@ -18,12 +18,15 @@
         </div>
       </div>
     {{/if}}
-    <table class="table table-bordered reactive-table" reactive-table-group="{{group}}">
+    <table class="table reactive-table" reactive-table-group="{{group}}">
       <thead>
         <tr>
           {{#each fields}}
             {{#if isSortKey this ../group ../fields}}
               <th class="{{getKey}} sortable" index="{{getFieldIndex ../fields}}">
+                {{#if filterable}}
+                  {{> reactiveTableColumnFilter}}
+                {{/if}}
                 {{getLabel}}&nbsp;&nbsp;
                 {{#if isAscending ../group}}
                   {{#if ../useFontAwesome}}
@@ -41,9 +44,19 @@
               </th>
             {{else}}
               {{#if isSortable}}
-                <th class="{{getKey}} sortable" index="{{getFieldIndex ../fields}}">{{getLabel}}</th>
+                <th class="{{getKey}} sortable" index="{{getFieldIndex ../fields}}">
+                  {{#if filterable}}
+                    {{> reactiveTableColumnFilter}}
+                  {{/if}}
+                  {{getLabel}}
+                </th>
               {{else}}
-                <th class="{{getKey}}" index="{{getFieldIndex ../fields}}">{{getLabel}}</th>
+                <th class="{{getKey}}" index="{{getFieldIndex ../fields}}">
+                  {{#if filterable}}
+                    {{> reactiveTableColumnFilter}}
+                  {{/if}}
+                  {{getLabel}}
+                </th>
               {{/if}}
             {{/if}}
           {{/each}}
@@ -57,7 +70,7 @@
                 <td class="{{key}}">{{#if tmpl}}{{#with ..}}{{> ../tmpl}}{{/with}}{{else}}{{getField ..}}{{/if}}</td>
               {{/each}}
             {{else}}
-              <td colspan={{length ../fields}}>{{> reactiveTableRowPrompt promptObj }}</td>
+              <td class="prompt-row" colspan={{length ../fields}}>{{> reactiveTableRowPrompt promptObj }}</td>
             {{/unless}}
           </tr>
         {{/each}}
@@ -87,7 +100,23 @@
 </template>
 
 <template name="reactiveTableRowPrompt">
-  {{message}}
+  <span class="row-prompt-message">{{message}}</span>
   <button class="no_btn">No</button>
   <button class="yes_btn">Yes</button>
+</template>
+
+<template name="reactiveTableColumnFilter">
+  <div class="btn-group reactive-table-column-filter">
+    <a class="filter-toggle" data-toggle="dropdown">&#x2611;</a>
+    <ul class="dropdown-menu">
+      {{#each columnValues}}
+        <li>
+          <a href="#">
+            <input type="checkbox" value={{this}} />
+            {{this}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </template>

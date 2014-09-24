@@ -1,6 +1,5 @@
 .reactive-table .sortable {
     cursor: pointer;
-    color: black;
 }
 
 .reactive-table-navigation .form-inline input {
@@ -37,6 +36,71 @@
 }
 
 .yes_btn, .no_btn {
-    float: right;
-    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    border: none;
+    color: #fff;
+}
+
+.yes_btn {
+    right: 60px;
+    background-color: rgba(89, 163, 46, 0.7);
+}
+
+.no_btn {
+    right: 0;
+    background-color: rgba(196, 51, 51, 0.7);
+}
+
+.row-prompt-message {
+    font-weight: bold;
+}
+
+.reactive-table {
+    border: 1px solid #ccc;
+}
+
+.reactive-table thead tr {
+    color: #666;
+    background-color: rgba(83, 161, 204, 0.08);
+}
+
+.reactive-table td, .reactive-table th {
+    padding: 13px !important;
+} 
+
+.reactive-table th {
+    border: none !important;
+}
+
+.reactive-table .filter-toggle {
+    text-decoration: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.reactive-table td {
+    position: relative;
+}
+
+.reactive-table .hover-view {
+    display: none;
+    padding: 13px;
+}
+
+.reactive-table td:hover .hover-view {
+    display: table-cell;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(250, 250, 250, 0.9);
+}
+
+.reactive-table tbody tr:hover {
+    cursor: pointer;
+    background-color: rgba(83, 161, 204, 0.05)
 }
